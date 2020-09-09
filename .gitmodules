@@ -1,0 +1,48 @@
+[submodule "vim/.vim/plugged/ale"]
+	path = vim/.vim/plugged/ale
+	url = https://github.com/dense-analysis/ale.git
+[submodule "vim/.vim/plugged/fzf"]
+	path = vim/.vim/plugged/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "vim/.vim/plugged/fzf.vim"]
+	path = vim/.vim/plugged/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule "vim/.vim/plugged/previm"]
+	path = vim/.vim/plugged/previm
+	url = https://github.com/previm/previm.git
+[submodule "vim/.vim/plugged/traces.vim"]
+	path = vim/.vim/plugged/traces.vim
+	url = https://github.com/markonm/traces.vim.git
+[submodule "vim/.vim/plugged/vim-airline"]
+	path = vim/.vim/plugged/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "vim/.vim/plugged/vim-cheatsheet"]
+	path = vim/.vim/plugged/vim-cheatsheet
+	url = https://github.com/reireias/vim-cheatsheet.git
+[submodule "vim/.vim/plugged/vim-fugitive"]
+	path = vim/.vim/plugged/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/.vim/plugged/vim-operator-replace"]
+	path = vim/.vim/plugged/vim-operator-replace
+	url = https://github.com/kana/vim-operator-replace.git
+[submodule "vim/.vim/plugged/vim-operator-user"]
+	path = vim/.vim/plugged/vim-operator-user
+	url = https://github.com/kana/vim-operator-user.git
+[submodule "vim/.vim/plugged/vim-quickrun"]
+	path = vim/.vim/plugged/vim-quickrun
+	url = https://github.com/thinca/vim-quickrun.git
+[submodule "vim/.vim/plugged/vim-table-mode"]
+	path = vim/.vim/plugged/vim-table-mode
+	url = https://github.com/dhruvasagar/vim-table-mode.git
+[submodule "vim/.vim/plugged/vimdoc-ja"]
+	path = vim/.vim/plugged/vimdoc-ja
+	url = https://github.com/vim-jp/vimdoc-ja.git
+[submodule "vim/.vim/plugged/winresizer"]
+	path = vim/.vim/plugged/winresizer
+	url = https://github.com/simeji/winresizer.git
+[submodule "zsh/.zsh/anyframe"]
+	path = zsh/.zsh/anyframe
+	url = https://github.com/mollifier/anyframe.git
+[submodule "zsh/.zsh/zsh-git-escape-magic"]
+	path = zsh/.zsh/zsh-git-escape-magic
+	url = https://github.com/knu/zsh-git-escape-magic.git
