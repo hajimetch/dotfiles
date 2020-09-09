@@ -1,0 +1,24 @@
+{
+  "title": "CapsLock to Control",
+  "rules": [
+    {
+      "description": "CapsLockをControlに置き換える",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_control"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}
