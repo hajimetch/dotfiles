@@ -189,3 +189,6 @@ unset __conda_setup
 # prompt に conda environment name を表示
 autoload -U promptinit; promptinit
 prompt pure
+
+# added by fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

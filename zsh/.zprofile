@@ -32,7 +32,7 @@ fi
 # Python
 #
 
-export PYTHONPATH="/Users/hajimetch/opt/anaconda3/bin"
+# export PYTHONPATH=""
 
 #
 # Paths
@@ -49,9 +49,8 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
-  /usr/local/opt/texinfo/bin
   $HOME/.bin
-  $HOME/.nodebrew/current/bin
+  $HOME/.cargo/bin
   $path
 )
 

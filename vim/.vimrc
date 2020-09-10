@@ -14,7 +14,7 @@ set showcmd
 " バックスペースを有効にする
 set backspace=indent,eol,start
 " クリップボードを有効にする
-set clipboard^=unnamed
+set clipboard^=unnamedplus
 
 
 " 見た目系
@@ -110,7 +110,7 @@ nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
 
 " previmの設定
-let g:previm_open_cmd = 'open -a Google\ Chrome'
+let g:previm_open_cmd = '/opt/google/chrome/google-chrome'
 
 " aleの設定
 " 保存時のみ実行する
