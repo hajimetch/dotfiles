@@ -115,7 +115,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-
-# added by fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
