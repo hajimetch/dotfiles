@@ -80,7 +80,7 @@ Plug 'w0rp/ale'
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-operator-replace'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'markonm/traces.vim'
 call plug#end()
