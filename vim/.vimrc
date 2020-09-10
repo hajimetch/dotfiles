@@ -89,7 +89,7 @@ call plug#end()
 set helplang=ja,en
 
 " Cheatsheetのパス
-let g:cheatsheet#cheat_file = '~/.cheatsheet.md'
+let g:cheatsheet#cheat_file = '~/.vim/cheatsheet.md'
 
 " winresizerの設定
 let g:winresizer_vert_resize = 1
@@ -127,3 +127,6 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " vim-operator-replaceの設定
 nmap R <Plug>(operator-replace)
+
+" fzf.vimの設定
+let g:fzf_command_prefix = 'Fzf'
