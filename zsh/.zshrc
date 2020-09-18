@@ -10,8 +10,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
-#
 
 ########################################
 # オプション
@@ -100,7 +98,7 @@ alias -g G='| grep'
 alias -g C='| pbcopy'
 
 # git ショートカットを一覧化
-alias zgit='cat ~/.zprezto/modules/git/alias.zsh | grep "alias "'
+alias zgit='cat ~/.zprezto/modules/git/alias.zsh | grep "alias " | less'
 
 # ls/exa aliases
 if [[ $(command -v exa) ]]; then
@@ -125,9 +123,6 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 # generate password alias
 alias pw='pwgen -1s 12 | tr -d "\n" | pbcopy'
-
-# jupyter lab alias
-alias jl='jupyter lab'
 
 
 ########################################
