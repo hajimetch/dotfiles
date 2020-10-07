@@ -124,6 +124,9 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 # generate password alias
 alias pw='pwgen -1s 12 | tr -d "\n" | pbcopy'
 
+# delete .DS_Store files alias
+alias delds='find . -name ".DS_Store" -type f -print -delete'
+
 
 ########################################
 # anyframe
