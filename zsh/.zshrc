@@ -136,18 +136,18 @@ fpath=($HOME/.zsh/anyframe(N-/) $fpath)
 autoload -Uz anyframe-init
 anyframe-init
 
-# ^J
-# peco でディレクトリの移動履歴を表示
-bindkey '^J' anyframe-widget-cdr
+# ^S
+# ディレクトリの移動履歴を表示
+bindkey '^S' anyframe-widget-cdr
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 
 # ^R
-# peco でコマンドの実行履歴を表示
+# コマンドの実行履歴を表示
 bindkey '^R' anyframe-widget-put-history
 
 # ^O
-# peco でファイル名を挿入
+# ファイル名を挿入
 bindkey '^O' anyframe-widget-insert-filename
 
 # aw
