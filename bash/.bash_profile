@@ -1,4 +1,4 @@
 # run ~/.bashrc when login
 if [ -f ~/.bashrc ] ; then
-    ~/.bashrc
+    source ~/.bashrc
 fi
