@@ -1,6 +1,6 @@
 # run ~/.bashrc when login
 if [ -f ~/.bashrc ] ; then
-    ~/.bashrc
+    source ~/.bashrc
 fi
 
 # added by Anaconda3 2019.10 installer
@@ -19,3 +19,7 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
+
+# added by user
+export PYTHONPATH=/Users/hajimetch/opt/anaconda3/bin
+export LANG=ja_JP.UTF-8
