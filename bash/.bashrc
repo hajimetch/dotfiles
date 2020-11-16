@@ -119,3 +119,4 @@ fi
 # added by user
 alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
 alias updatedb="sudo /usr/libexec/locate.updatedb"
+
