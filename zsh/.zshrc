@@ -127,6 +127,10 @@ alias pw='pwgen -1s 12 | tr -d "\n" | pbcopy'
 # delete .DS_Store files alias
 alias delds='find . -name ".DS_Store" -type f -print -delete'
 
+# restart jupyter lab alias
+alias rstjl='launchctl unload ~/Library/LaunchAgents/com.jupyter.lab.plist;\
+  launchctl load ~/Library/LaunchAgents/com.jupyter.lab.plist'
+
 
 ########################################
 # anyframe
