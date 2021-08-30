@@ -83,6 +83,7 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'markonm/traces.vim'
+Plug 'nanotech/jellybeans.vim'
 call plug#end()
 
 " helpを日本語化
@@ -130,3 +131,6 @@ nmap R <Plug>(operator-replace)
 
 " fzf.vimの設定
 let g:fzf_command_prefix = 'Fzf'
+
+" カラースキーム設定
+colorscheme jellybeans
