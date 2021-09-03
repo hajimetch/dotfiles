@@ -84,7 +84,7 @@ bindkey "^[p" history-beginning-search-backward-end
 bindkey "^[n" history-beginning-search-forward-end
 
 # 全履歴の一覧を出力する
-alias hall="history -E -i 1"
+alias -g hall="history -E -i 1"
 
 
 ########################################
@@ -98,21 +98,21 @@ alias -g G='| grep'
 alias -g C='| pbcopy'
 
 # git ショートカットを一覧化
-alias zgit='cat ~/.zprezto/modules/git/alias.zsh | grep "alias " | less'
+alias -g zgit='cat ~/.zprezto/modules/git/alias.zsh | grep "alias " | less'
 
 # ls/exa aliases
 if [[ $(command -v exa) ]]; then
-  alias e='exa'
-  alias l=e
-  alias ls=e
-  alias ea='exa -a'
-  alias la=ea
-  alias ee='exa -aal'
-  alias ll=ee
-  alias et='exa -T -L 3 -a -I "node_modules|.git|.cache"'
-  alias lt=et
-  alias eta='exa -T -a -I "node_modules|.git|.cache" --color=always | less -r'
-  alias lta=eta
+  alias -g e='exa'
+  alias -g l=e
+  alias -g ls=e
+  alias -g ea='exa -a'
+  alias -g la=ea
+  alias -g ee='exa -aal'
+  alias -g ll=ee
+  alias -g et='exa -T -L 3 -a -I "node_modules|.git|.cache"'
+  alias -g lt=et
+  alias -g eta='exa -T -a -I "node_modules|.git|.cache" --color=always | less -r'
+  alias -g lta=eta
 fi
 
 # brew alias
@@ -130,6 +130,12 @@ alias delds='find . -name ".DS_Store" -type f -print -delete'
 # restart jupyter lab alias
 alias rstjl='launchctl unload ~/Library/LaunchAgents/com.jupyter.lab.plist;\
   launchctl load ~/Library/LaunchAgents/com.jupyter.lab.plist'
+
+# less_with_unbuffer alias
+less_with_unbuffer () {
+    unbuffer "$@" |& less -SR
+}
+alias ul=less_with_unbuffer
 
 
 ########################################

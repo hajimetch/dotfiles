@@ -29,12 +29,6 @@ if [[ -z "$LANG" ]]; then
 fi
 
 #
-# Python
-#
-
-export PYTHONPATH="/Users/hajimetch/opt/anaconda3/bin"
-
-#
 # Paths
 #
 
@@ -67,3 +61,10 @@ export LESS='-g -i -M -r -S -w -z-4'
 if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
+
+#
+# Other
+#
+
+export PYTHONPATH="/Users/hajimetch/opt/anaconda3/bin"
+export TCLLIBPATH="/usr/local/lib"
