@@ -66,5 +66,7 @@ fi
 # Other
 #
 
-export PYTHONPATH="/Users/hajimetch/opt/anaconda3/bin"
+export PIPENV_VENV_IN_PROJECT=1
+export SYSTEM_VERSION_COMPAT=1
 export TCLLIBPATH="/usr/local/lib"
+
