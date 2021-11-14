@@ -34,9 +34,6 @@ set showmatch
 set laststatus=2
 " コマンドラインの補完
 set wildmode=list:longest
-" 折り返し時に表示行単位での移動できるようにする
-nnoremap j gj
-nnoremap k gk
 " シンタックスハイライトの有効化
 syntax enable
 
@@ -65,6 +62,38 @@ set wrapscan
 set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+
+" キーバインド系
+" インサートモードのESCをjjにキーバインドする
+inoremap <silent> jj <ESC>
+
+" コマンド入力中断
+imap <silent> <C-g> <ESC><ESC><ESC><CR>i
+
+" 画面分割
+imap <silent> <C-x>1 <ESC>:only<CR>i
+imap <silent> <C-x>2 <ESC>:sp<CR>i
+imap <silent> <C-x>3 <ESC>:vsp<CR>i
+imap <silent> <C-x>o <ESC><C-w>w<CR>i
+imap <silent> <C-x>p <ESC><C-w>p<CR>i
+
+" 消去、編集
+imap <C-k> <ESC>d$i
+imap <C-y> <ESC>pi
+imap <C-d> <ESC>xi
+
+" 移動
+imap <C-a>  <Home>
+imap <C-e>  <End>
+imap <C-b>  <Left>
+imap <C-f>  <Right>
+imap <C-n>  <Down>
+imap <C-p>  <UP>
+
+" 折り返し時に表示行単位での移動できるようにする
+nnoremap j gj
+nnoremap k gk
 
 
 " Plugins
