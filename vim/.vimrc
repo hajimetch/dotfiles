@@ -95,6 +95,10 @@ imap <C-p>  <UP>
 nnoremap j gj
 nnoremap k gk
 
+" 一文字削除・修正でヤンクしない
+nnoremap x "_x
+nnoremap s "_s
+
 
 " Plugins
 call plug#begin('~/.vim/plugged')
