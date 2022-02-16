@@ -167,3 +167,9 @@ let g:fzf_command_prefix = 'Fzf'
 
 " カラースキーム設定
 colorscheme jellybeans
+" 背景を透過させる
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight LineNr ctermbg=none
+highlight Folded ctermbg=none
+highlight EndOfBuffer ctermbg=none
