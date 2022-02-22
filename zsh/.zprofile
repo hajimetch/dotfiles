@@ -67,6 +67,5 @@ fi
 #
 
 export PIPENV_VENV_IN_PROJECT=1
-export SYSTEM_VERSION_COMPAT=1
 export TCLLIBPATH="/usr/local/lib"
 

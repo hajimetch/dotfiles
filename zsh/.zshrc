@@ -68,7 +68,7 @@ bindkey -e
 # コマンド履歴検索
 
 # 履歴を保存するファイル
-HISTFILE=$HOME/.zhistory
+HISTFILE=$HOME/.zsh_history
 
 # メモリ内の履歴の数
 HISTSIZE=1000000
