@@ -102,17 +102,11 @@ alias -g zgit='cat ~/.zprezto/modules/git/alias.zsh | grep "alias " | less'
 
 # ls/exa aliases
 if [[ $(command -v exa) ]]; then
-  alias -g e='exa'
-  alias -g l=e
-  alias -g ls=e
-  alias -g ea='exa -a'
-  alias -g la=ea
-  alias -g ee='exa -aal'
-  alias -g ll=ee
-  alias -g et='exa -T -L 3 -a -I "node_modules|.git|.cache"'
-  alias -g lt=et
-  alias -g eta='exa -T -a -I "node_modules|.git|.cache" --color=always | less -r'
-  alias -g lta=eta
+  alias -g l='exa --time-style=long-iso -g'
+  alias -g ll='exa --git --time-style=long-iso -gl'
+  alias -g la='exa --git --time-style=long-iso -agl'
+  alias -g lt='exa -T -L 3 -a -I "node_modules|.git|.cache"'
+  alias -g lta='exa -T -a -I "node_modules|.git|.cache" --color=always | less -r'
 fi
 
 # brew alias
