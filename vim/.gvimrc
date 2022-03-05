@@ -1,2 +1,3 @@
 source ~/.vimrc
-set transparency=20
+set transparency=10
+set guifont=RictyDiminished-Regular:h16
