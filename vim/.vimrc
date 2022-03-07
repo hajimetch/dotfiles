@@ -81,7 +81,7 @@ imap <silent> <C-x>p <ESC><C-w>p<CR>i
 " 消去、編集
 imap <C-k> <ESC>d$i
 imap <C-y> <ESC>pi
-imap <C-d> <ESC>xi
+imap <C-d> <ESC>lxi
 
 " 移動
 imap <C-a>  <Home>
