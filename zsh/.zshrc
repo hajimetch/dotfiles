@@ -178,3 +178,8 @@ fi
 # asdf
 . /usr/local/opt/asdf/libexec/asdf.sh
 
+# kubectl
+source <(kubectl completion zsh)
+alias k=kubectl
+complete -F __start_kubectl k
+
