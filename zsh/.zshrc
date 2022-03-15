@@ -181,5 +181,5 @@ fi
 # kubectl
 source <(kubectl completion zsh)
 alias k=kubectl
-complete -F __start_kubectl k
+compdef __start_kubectl k
 
