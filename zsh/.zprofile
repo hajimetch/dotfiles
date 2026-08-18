@@ -69,3 +69,4 @@ fi
 export PIPENV_VENV_IN_PROJECT=1
 export TCLLIBPATH="/usr/local/lib"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"

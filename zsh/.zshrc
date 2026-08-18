@@ -100,17 +100,28 @@ alias -g C='| pbcopy'
 # git ショートカットを一覧化
 alias -g zgit='cat ~/.zprezto/modules/git/alias.zsh | grep "alias " | less'
 
-# ls/exa aliases
-if [[ $(command -v exa) ]]; then
-  alias -g l='exa --time-style=long-iso -g'
-  alias -g ll='exa --git --time-style=long-iso -gl'
-  alias -g la='exa --git --time-style=long-iso -agl'
-  alias -g lt='exa -T -L 3 -a -I "node_modules|.git|.cache"'
-  alias -g lta='exa -T -a -I "node_modules|.git|.cache" --color=always | less -r'
+# ls 設定
+if [[ $(uname) == 'Darwin' ]]; then
+    # macOS用 (BSD ls)
+    alias ls='ls -G'
+    alias ll='ls -lG'
+    alias la='ls -laG'
+else
+    # Linux用 (GNU ls)
+    alias ls='ls --color=auto'
+    alias ll='ls -l --color=auto'
+    alias la='ls -la --color=auto'
 fi
 
-# brew alias
-alias brew='PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin brew'
+# 安全対策
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+# ディレクトリ移動の短縮
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 # locate.updatedb alias
 alias updatedb='sudo /usr/libexec/locate.updatedb'
@@ -120,12 +131,6 @@ alias pw='pwgen -1s 12 | tr -d "\n" | pbcopy'
 
 # delete .DS_Store files alias
 alias delds='find . -name ".DS_Store" -type f -print -delete'
-
-# less_with_unbuffer alias
-less_with_unbuffer () {
-    unbuffer "$@" |& less -SR
-}
-alias ul=less_with_unbuffer
 
 
 ########################################
@@ -176,7 +181,11 @@ fi
 # Other
 
 # asdf
-. /usr/local/opt/asdf/libexec/asdf.sh
+if [[ -f /opt/homebrew/opt/asdf/libexec/asdf.sh ]]; then
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
+elif [[ -f $HOME/.asdf/asdf.sh ]]; then
+  . $HOME/.asdf/asdf.sh
+fi
 
 # kubectl
 source <(kubectl completion zsh)
@@ -185,3 +194,6 @@ compdef __start_kubectl k
 
 # starship
 eval "$(starship init zsh)"
+
+# Created by `pipx` on 2025-09-12 08:23:21
+export PATH="$PATH:/Users/hajimetch/.local/bin"

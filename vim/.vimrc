@@ -1,177 +1,191 @@
-" setting
-" 文字コードをUFT-8に設定
-set fenc=utf-8
-" バックアップファイルを作らない
-set nobackup
-" スワップファイルを作らない
-set noswapfile
-" 編集中のファイルが変更されたら自動で読み直す
-set autoread
-" バッファが編集中でもその他のファイルを開けるように
-set hidden
-" 入力中のコマンドをステータスに表示する
-set showcmd
-" バックスペースを有効にする
-set backspace=indent,eol,start
-" クリップボードを有効にする
-set clipboard^=unnamed
+" =================================================================
+" 基本設定 (Basic Settings)
+" =================================================================
+set fenc=utf-8               " 文字コード
+set nobackup                 " バックアップ取らない
+set noswapfile               " スワップファイル作らない
+set autoread                 " 外部変更の自動読み込み
+set hidden                   " バッファ切り替え時に保存を強制しない
+set showcmd                  " 入力中のコマンドを表示
+set backspace=indent,eol,start " バックスペースの挙動改善
+set clipboard^=unnamed       " OSのクリップボードと連携
+set lazyredraw               " マクロ実行中などの再描画を抑制（高速化）
 
+" =================================================================
+" 見た目・表示 (Visual Settings)
+" =================================================================
+set number                   " 行番号表示
+set cursorline               " 現在行ハイライト
+set virtualedit=onemore      " 行末のさらに1文字先へ移動可能に
+set showmatch                " 対応する括弧を強調
+set laststatus=2             " ステータスラインを常に表示
+set wildmode=list:longest    " コマンドライン補完モード
+set visualbell t_vb=         " ビープ音を鳴らさない・画面フラッシュもしない
+set noerrorbells
 
-" 見た目系
-" 行番号を表示
-set number
-" 現在の行を強調表示
-set cursorline
-" 行末の1文字先までカーソルを移動できるように
-set virtualedit=onemore
-" インデントはスマートインデント
-set smartindent
-" ビープ音を可視化
-set visualbell
-" 括弧入力時の対応する括弧を表示
-set showmatch
-" ステータスラインを常に表示
-set laststatus=2
-" コマンドラインの補完
-set wildmode=list:longest
-" シンタックスハイライトの有効化
+" シンタックスとインデントの自動検出（smartindentの代わり）
 syntax enable
+filetype plugin indent on
 
+" =================================================================
+" Tab・インデント (Tab & Indent)
+" =================================================================
+set list listchars=tab:\▸\-  " 不可視文字の可視化
+set expandtab                " Tabをスペースに変換
+set tabstop=2                " Tabの表示幅
+set shiftwidth=2             " 自動インデントの幅
+set softtabstop=2            " キーボードでTabを押した時の幅
 
-" Tab系
-" 不可視文字を可視化(タブが「▸-」と表示される)
-set list listchars=tab:\▸\-
-" Tab文字を半角スペースにする
-set expandtab
-" 行頭以外のTab文字の表示幅（スペースいくつ分）
-set tabstop=2
-" 行頭でのTab文字の表示幅
-set shiftwidth=2
-
-
-" 検索系
-" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
-set ignorecase
-" 検索文字列に大文字が含まれている場合は区別して検索する
-set smartcase
-" 検索文字列入力時に順次対象文字列にヒットさせる
-set incsearch
-" 検索時に最後まで行ったら最初に戻る
-set wrapscan
-" 検索語をハイライト表示
-set hlsearch
+" =================================================================
+" 検索 (Search)
+" =================================================================
+set ignorecase               " 大文字小文字を区別しない
+set smartcase                " 大文字が含まれる場合のみ区別
+set incsearch                " インクリメンタルサーチ
+set wrapscan                 " 最後まで検索したら先頭に戻る
+set hlsearch                 " 検索結果をハイライト
 " ESC連打でハイライト解除
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
 
-
-" キーバインド系
-" インサートモードのESCをjjにキーバインドする
+" =================================================================
+" キーバインド (Keymap)
+" =================================================================
+" インサートモードから抜ける
 inoremap <silent> jj <ESC>
 
-" コマンド入力中断
-imap <silent> <C-g> <ESC><ESC><ESC><CR>i
+" Emacs like keybindings in Insert Mode
+" ※ 補完メニュー(PUM)が出ている時は、メニュー選択を優先するように調整
+inoremap <expr> <C-n> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <C-p> pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+" <C-d>, <C-k> 等は通常動作
 
-" 画面分割
-imap <silent> <C-x>1 <ESC>:only<CR>i
-imap <silent> <C-x>2 <ESC>:sp<CR>i
-imap <silent> <C-x>3 <ESC>:vsp<CR>i
-imap <silent> <C-x>o <ESC><C-w>w<CR>i
-imap <silent> <C-x>p <ESC><C-w>p<CR>i
+" コマンド入力中断 (Emacs style cancel)
+inoremap <silent> <C-g> <ESC><ESC><ESC><CR>a
 
-" 消去、編集
-imap <C-k> <C-o>d$
-imap <C-y> <C-o>p
-imap <C-d> <C-o>x
+" 画面分割と移動 (Emacs style window management)
+" ※ 元の設定に合わせていますが、Insertモードに戻る挙動は好みが分かれます
+inoremap <silent> <C-x>1 <ESC>:only<CR>a
+inoremap <silent> <C-x>2 <ESC>:sp<CR>a
+inoremap <silent> <C-x>3 <ESC>:vsp<CR>a
+inoremap <silent> <C-x>o <ESC><C-w>w<CR>a
+inoremap <silent> <C-x>p <ESC><C-w>p<CR>a
 
-" 移動
-imap <C-a> <Home>
-imap <C-e> <End>
-imap <C-b> <Left>
-imap <C-f> <Right>
-imap <C-n> <Down>
-imap <C-p> <UP>
+" 編集・削除系
+inoremap <C-k> <C-o>d$
+inoremap <C-y> <C-o>p
+inoremap <C-d> <C-o>x
 
-" 折り返し時に表示行単位での移動できるようにする
+" 折り返し行移動
 nnoremap j gj
 nnoremap k gk
 
-" 一文字削除・修正でヤンクしない
+" x, s でヤンク（コピー）しない（ブラックホールレジスタへ）
 nnoremap x "_x
 nnoremap s "_s
 
-
-" Plugins
+" =================================================================
+" プラグイン (Plugins)
+" =================================================================
 call plug#begin('~/.vim/plugged')
-Plug 'vim-jp/vimdoc-ja'
-Plug 'reireias/vim-cheatsheet'
-Plug 'simeji/winresizer'
-Plug 'vim-airline/vim-airline'
-Plug 'previm/previm'
-Plug 'thinca/vim-quickrun'
-Plug 'tpope/vim-fugitive'
-Plug 'w0rp/ale'
+" 基本・UI
+Plug 'vim-jp/vimdoc-ja'                " 日本語ヘルプ
+Plug 'reireias/vim-cheatsheet'         " チートシート
+Plug 'simeji/winresizer'               " ウィンドウサイズ変更 (Ctrl+e)
+Plug 'vim-airline/vim-airline'         " ステータスライン装飾
+Plug 'nanotech/jellybeans.vim'         " ダークカラースキーム
+Plug 'cormacrelf/vim-colors-github'    " ライトカラースキーム
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " FZF本体
+Plug 'junegunn/fzf.vim'                " FZFのVim連携
+Plug 'markonm/traces.vim'              " 置換のプレビュー
+
+" 編集・Git・実行
 Plug 'kana/vim-operator-user'
-Plug 'kana/vim-operator-replace'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'markonm/traces.vim'
-Plug 'nanotech/jellybeans.vim'
+Plug 'kana/vim-operator-replace'       " 'R'で置き換え
+Plug 'tpope/vim-fugitive'              " Git連携
+Plug 'thinca/vim-quickrun'             " コード実行
+Plug 'dhruvasagar/vim-table-mode'      " テーブル編集
+Plug 'previm/previm'                   " Markdownプレビュー
+
+" LSP / 補完 / Lint
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-" helpを日本語化
+" -----------------------------------------------------------------
+" プラグイン設定
+" -----------------------------------------------------------------
+" Help
 set helplang=ja,en
 
-" Cheatsheetのパス
+" Cheatsheet
 let g:cheatsheet#cheat_file = '~/.vim/cheatsheet.md'
 
-" winresizerの設定
+" WinResizer
 let g:winresizer_vert_resize = 1
 let g:winresizer_horiz_resize = 1
 
-" vim-airlineの設定
-set laststatus=2
+" Airline
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
 let g:airline_section_c = '%t'
 let g:airline_section_x = '%{&filetype}'
-let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
-let g:airline#extensions#default#section_truncate_width = {}
+let g:airline_section_z = '%3l:%2v %{coc#status()}'
 let g:airline#extensions#whitespace#enabled = 1
+" Tab切り替え
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
 
-" previmの設定
+" Previm
 let g:previm_open_cmd = 'open -a Google\ Chrome'
 
-" aleの設定
-" 保存時のみ実行する
-let g:ale_lint_on_text_changed = 0
-" 表示に関する設定
-let g:airline#extensions#ale#open_lnum_symbol = '('
-let g:airline#extensions#ale#close_lnum_symbol = ')'
-let g:ale_echo_msg_format = '[%linter%]%code: %%s'
-highlight link ALEErrorSign Tag
-highlight link ALEWarningSign StorageClass
-" Ctrl + kで次の指摘へ、Ctrl + jで前の指摘へ移動
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-" vim-operator-replaceの設定
+" Operator Replace
 nmap R <Plug>(operator-replace)
 
-" fzf.vimの設定
-let g:fzf_command_prefix = 'Fzf'
+" -----------------------------------------------------------------
+" Coc.nvim 設定 (LSP & Completion)
+" -----------------------------------------------------------------
+" TABキーで補完を選択できるようにする
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" coc tab completion
-inoremap <silent><expr> <TAB> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
+" Enterキーで決定
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" カラースキーム設定
-colorscheme jellybeans
-" 背景を透過させる
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" 定義ジャンプなどの基本操作
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" K でドキュメント表示
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" -----------------------------------------------------------------
+" カラースキーム (Color Scheme)
+" -----------------------------------------------------------------
+colorscheme github
+" 背景透過設定
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
 highlight LineNr ctermbg=none
