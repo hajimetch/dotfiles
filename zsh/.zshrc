@@ -147,6 +147,11 @@ export BROWSER='open'
 export PIPENV_VENV_IN_PROJECT=1
 export TCLLIBPATH="/usr/local/lib"
 
+# Claude Code: テレメトリー・エラーレポート等の非必須通信を無効化
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+export DISABLE_TELEMETRY=1
+export DISABLE_ERROR_REPORTING=1
+
 # Less の挙動設定
 export LESS='-g -i -M -r -S -w -z-4'
 if (( $#commands[(i)lesspipe(|.sh)] )); then
