@@ -10,6 +10,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # 実行されなくなる (compdef が定義されない) 問題があるため fpath から除外する。
 fpath=(${fpath:#/usr/local/share/zsh/site-functions})
 
+# Docker CLI 補完。Docker Desktop は .zshrc 末尾に compinit 付きで追記するが、
+# zim が compinit を実行済みで二重呼び出しの警告が出るため、zim 初期化より前に
+# fpath だけ追加し、compinit は zim に任せる。追記された場合は削除すること。
+fpath=($HOME/.docker/completions(N-/) $fpath)
+
 # Start configuration added by Zim Framework install {{{
 #
 # User configuration sourced by interactive shells
